@@ -1,0 +1,118 @@
+body {
+  background-color: #5F5449;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  
+}
+
+.tooltip {
+  background-color: #f2f2f2;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #333;
+}
+
+
+input, button {
+  font-size: 14px;
+  color: #333;
+  text-align: left;
+  padding: 8px;
+  background-color: #C8D0CD;
+  border: 2px solid;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+select {
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  font-size: 14px;
+  color: #333;
+  text-align: left;
+  padding: 8px;
+  background-color: #C8D0CD;
+  border: 2px solid;
+}
+
+
+input:hover, select:hover {
+  background-color: #e6e6e6;
+}
+
+
+.App {
+  text-align: center;
+  border: 5px solid black;
+  margin: 0px 350px 0px 350px;
+  /* top right bottom left */  
+}
+
+.App-header {
+  min-height: 66vh;
+  /* display: flex; */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: blanchedalmond;
+  font-weight: bold;
+  background-color: #A9927D;
+}
+
+.test-header{
+  background-color: #320C13;
+  padding: 0.8rem;
+  color: blanchedalmond;
+}
+
+.App-footer {
+  background-color: #320C13;
+  padding: 0.15rem;
+  color: blanchedalmond;
+}
+
+.App-nav a {
+  padding: 0px 20px 5px 20px;
+  background-color: #5E503F;
+  text-decoration:none;
+  color:blanchedalmond;
+  line-height:1;
+  vertical-align:middle;
+  border-right: 2px solid blanchedalmond;
+  font-size: 1.3em;
+  font-weight:bold;
+  border-radius:3px;
+}
+
+.App-nav a:hover {
+  color: #4B1307;
+  background-color: rgb(247, 218, 174);
+}
+
+td, th {
+  border: 2px solid black;
+  padding: 8px;
+}
+
+td {
+  text-align: right;
+  padding-left: 20px
+}
+
+tr:nth-child(even){background-color: #52141F;}
+tr:nth-child(odd){background-color: #39332D;}
+
+tr:hover {background-color: #181410;}
+
+th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: right;
+  background-color: #320C13;
+  color: blanchedalmond;
+}
+
+table {
+  margin: 0 auto;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
