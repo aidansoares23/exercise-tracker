@@ -1,4 +1,3 @@
-import React from 'react';
 import { MdDeleteForever, MdEdit } from 'react-icons/md';
 
 function Exercise({ exercise, onDelete, onEdit }) {
