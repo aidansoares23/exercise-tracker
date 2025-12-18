@@ -1,12 +1,20 @@
 import 'dotenv/config';
 import * as exercises from './exercises_model.mjs';
 import express from 'express';
+import cors from "cors";
 
 const PORT = process.env.PORT;
 
 const app = express();
 
 app.use(express.json());
+
+app.use(cors({
+  origin: [
+    "http://localhost:3000",
+    "https://exercise-tracker-backend-ldcr.onrender.com"
+  ]
+}));
 
 // Accepts either MM-DD-YY or YYYY-MM-DD (native date input)
 // Returns normalized MM-DD-YY, or null if invalid.
