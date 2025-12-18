@@ -13,14 +13,13 @@ app.use(express.json());
 app.use(cors({
   origin: [
     "http://localhost:3000",
-    "https://exercise-tracker-dusky-gamma.vercel.app/"
+    "https://exercise-tracker-dusky-gamma.vercel.app"
   ],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type"],
 }));
 
 app.options("*", cors()); // handle preflight
-app.use(express.json());
 
 // Accepts either MM-DD-YY or YYYY-MM-DD (native date input)
 // Returns normalized MM-DD-YY, or null if invalid.
@@ -65,9 +64,9 @@ function validateExercise(req, res, next) {
         return res.status(400).json({ field: "name", message: "Name is required" });
     }
 
-    name = name.trim();
-    unit = unit.trim().toLowerCase();
-    date = date.trim();
+    name = (name ?? "").trim();
+    unit = (unit ?? "").trim().toLowerCase();
+    date = (date ?? "").trim();
 
     const normalizedDate = normalizeDateToMMDDYY(date);
 
@@ -77,8 +76,7 @@ function validateExercise(req, res, next) {
         message: "Date must be MM-DD-YY or YYYY-MM-DD",
     });
     }
-
-req.body.date = normalizedDate;
+    req.body.date = normalizedDate;
 
 
     if (!Number.isInteger(reps) || reps <= 0) {
