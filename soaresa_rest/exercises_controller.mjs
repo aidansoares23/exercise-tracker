@@ -9,12 +9,18 @@ const app = express();
 
 app.use(express.json());
 
+// CORS MUST be before routes
 app.use(cors({
   origin: [
     "http://localhost:3000",
     "https://exercise-tracker-backend-ldcr.onrender.com"
-  ]
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type"],
 }));
+
+app.options("*", cors()); // handle preflight
+app.use(express.json());
 
 // Accepts either MM-DD-YY or YYYY-MM-DD (native date input)
 // Returns normalized MM-DD-YY, or null if invalid.
