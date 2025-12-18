@@ -1,42 +1,87 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ExerciseList from '../components/ExerciseList';
-import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { apiUrl } from '../api';
 
-function HomePage({setExerciseToEdit}) {
-    const [exercises, setExercises] = useState([]);
-    const navigate = useNavigate();
+function HomePage({ setExerciseToEdit }) {
+  const [exercises, setExercises] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-    const onDelete = async _id => {
-        const response = await fetch(`/exercises/${_id}`, {method: 'DELETE'});
-        if (response.status === 204) {
-            setExercises(exercises.filter(e => e._id !== _id));
-        } else {
-            console.error(`Failed to delete exercise with _id: ${_id}, status code = ${response.status}`);
-        }
-    };
+  const navigate = useNavigate();
 
-    const onEdit = exercise => {
-        setExerciseToEdit(exercise);
-        navigate("/edit-exercise");
-    };
+  const onDelete = async (_id) => {
+    const response = await fetch(apiUrl(`/exercises/${_id}`), { method: 'DELETE' });
+    if (response.status === 204) {
+      setExercises((prev) => prev.filter((e) => e._id !== _id));
+    } else {
+      console.error(`Failed to delete exercise with _id: ${_id}`);
+    }
+  };
 
-    const loadExercises = async () => {
-        const response = await fetch('/exercises');//goes to localhost:3000 to retrieve exercises
-        const data = await response.json();
-        setExercises(data);
-    };
+  const onEdit = (exercise) => {
+    setExerciseToEdit(exercise);
+    navigate('/edit-exercise');
+  };
 
-    useEffect(() => {
-        loadExercises();
-    }, []);
+  const loadExercises = async () => {
+    setLoading(true);
+    setError(null);
 
-    return (
-        <>
-            <br />
-            <ExerciseList exercises={exercises} onDelete={onDelete} onEdit={onEdit} />
-        </>
-    );
+    try {
+      const response = await fetch(apiUrl('/exercises'));
+
+      if (!response.ok) {
+        throw new Error(`Server responded with ${response.status}`);
+      }
+
+      const data = await response.json();
+
+      if (!Array.isArray(data)) {
+        throw new Error('Unexpected response format');
+      }
+
+      setExercises(data);
+    } catch (err) {
+      console.error(err);
+      setError(
+        'The server may be waking up (free hosting). Please wait a moment and refresh.'
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    loadExercises();
+  }, []);
+
+  return (
+    <>
+      {loading && (
+        <p style={{ color: '#6b7280', marginTop: '12px' }}>
+          Loading exercises…
+        </p>
+      )}
+
+      {error && (
+        <div style={{ marginTop: '12px', color: '#991b1b' }}>
+          <p>{error}</p>
+          <button onClick={loadExercises} style={{ marginTop: '8px' }}>
+            Retry
+          </button>
+        </div>
+      )}
+
+      {!loading && !error && (
+        <ExerciseList
+          exercises={exercises}
+          onDelete={onDelete}
+          onEdit={onEdit}
+        />
+      )}
+    </>
+  );
 }
 
 export default HomePage;

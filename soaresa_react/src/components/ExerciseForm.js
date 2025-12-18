@@ -1,6 +1,6 @@
-// ExerciseForm.jsx
-import React, { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { apiUrl } from "../api";
 
 export const ExerciseForm = ({ initialValues, requestConfig, submitLabel }) => {
   const navigate = useNavigate();
@@ -57,7 +57,7 @@ export const ExerciseForm = ({ initialValues, requestConfig, submitLabel }) => {
     try {
       setIsSubmitting(true);
 
-      const response = await fetch(url, {
+      const response = await fetch(apiUrl(url), {
         method,
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(exercise),
