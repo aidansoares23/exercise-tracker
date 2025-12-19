@@ -273,8 +273,8 @@ button:disabled:hover {
   background: var(--surface);
 }
 
-/* subtle “scroll hint” on the right */
-.table-wrap::after {
+/* only show hint when we add the class */
+.table-wrap.has-hint::after {
   content: "";
   position: absolute;
   top: 0;
@@ -282,7 +282,20 @@ button:disabled:hover {
   width: 28px;
   height: 100%;
   pointer-events: none;
-  background: linear-gradient(90deg, rgba(255,253,249,0), rgba(255,253,249,1));
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0),
+    rgba(255,255,255,1)
+  );
+}
+
+/* optional: smooth fade */
+.table-wrap::after {
+  opacity: 0;
+  transition: opacity 160ms ease;
+}
+.table-wrap.has-hint::after {
+  opacity: 1;
 }
 
 table {
@@ -311,20 +324,14 @@ tr:hover {
 }
 
 @media (max-width: 680px) {
-  .App {
-    margin: 12px;
-  }
-  .App-content {
-    padding: 14px 14px 18px;
-  }
+  .App { margin: 12px; }
+  .App-content { padding: 14px 14px 18px; }
   .test-header,
-  .App-nav {
-    padding-left: 14px;
-    padding-right: 14px;
-  }
+  .App-nav { padding-left: 14px; padding-right: 14px; }
 
   .form-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr; /* <- stack */
   }
 }
+
 

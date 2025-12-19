@@ -1,8 +1,19 @@
-import Exercise from './Exercise';
+import { useState } from "react";
+import Exercise from "./Exercise";
 
 function ExerciseList({ exercises, onDelete, onEdit }) {
+  const [showHint, setShowHint] = useState(true);
+
   return (
-    <div className="table-wrap" aria-label="Exercise table">
+    <div
+      className={`table-wrap ${showHint ? "has-hint" : ""}`}
+      aria-label="Exercise table"
+      onScroll={(e) => {
+        if (e.currentTarget.scrollLeft > 0) {
+          setShowHint(false);
+        }
+      }}
+    >
       <table id="exercises">
         <thead>
           <tr>
