@@ -1,6 +1,6 @@
 # Workout Tracker (Exercise Tracker)
 
-A simple full-stack workout tracking app that lets you **add, view, edit, and delete exercises**. Built to practice full-stack fundamentals with **React + Node/Express + MongoDB**. :contentReference[oaicite:1]{index=1}
+A simple full-stack workout tracking app that lets you **add, view, edit, and delete exercises**. Built to practice full-stack fundamentals with **React + Node/Express + MongoDB**.
 
 **Live demo:** https://exercise-tracker-dusky-gamma.vercel.app/
 
