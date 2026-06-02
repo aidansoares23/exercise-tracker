@@ -2,35 +2,35 @@
 
 A simple full-stack workout tracking app that lets you **add, view, edit, and delete exercises**. Built to practice full-stack fundamentals with **React + Node/Express + MongoDB**. :contentReference[oaicite:1]{index=1}
 
-**Live demo:** https://exercise-tracker-dusky-gamma.vercel.app/ :contentReference[oaicite:2]{index=2}
+**Live demo:** https://exercise-tracker-dusky-gamma.vercel.app/
 
 ---
 
 ## Features
 
-- Create an exercise (name, reps, weight, unit, date) :contentReference[oaicite:3]{index=3}  
-- View all logged exercises :contentReference[oaicite:4]{index=4}  
-- Edit an exercise :contentReference[oaicite:5]{index=5}  
-- Delete an exercise :contentReference[oaicite:6]{index=6}  
-- REST API + persistent storage (MongoDB) :contentReference[oaicite:7]{index=7}  
+- Create an exercise (name, reps, weight, unit, date)
+- View all logged exercises
+- Edit an exercise
+- Delete an exercise
+- REST API + persistent storage (MongoDB)
 
 ---
 
 ## Tech Stack
 
 **Frontend**
-- React :contentReference[oaicite:8]{index=8}
+- React
 
 **Backend**
 - Node.js
 - Express
-- MongoDB :contentReference[oaicite:9]{index=9}
+- MongoDB
 
 ---
 
 ## Repo Structure
 
-This repo is split into two main folders: :contentReference[oaicite:10]{index=10}
+This repo is split into two main folders:
 
 - `soaresa_react/` — React client (frontend)
 - `soaresa_rest/` — Node/Express API (backend)
